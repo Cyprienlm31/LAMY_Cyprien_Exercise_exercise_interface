@@ -1,5 +1,5 @@
 
-public class Rectangle implements Sortable<Rectangle>{
+public class Rectangle implements Comparable<Rectangle>{
     private double height;
     private double width;
 
@@ -21,7 +21,7 @@ public class Rectangle implements Sortable<Rectangle>{
     }
 
     @Override
-    public boolean isBigger(Rectangle rectangle1, Rectangle rectangle2) {
-        return rectangle1.area() > rectangle2.area();
+    public int compareTo( Rectangle otherRectangle) {
+        return (int) (this.area() - otherRectangle.area());
     }
 }

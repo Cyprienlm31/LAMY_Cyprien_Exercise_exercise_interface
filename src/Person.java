@@ -1,6 +1,6 @@
 import static java.lang.Math.min;
 
-public class Person implements Sortable<Person> {
+public class Person implements Comparable<Person> {
     private String name;
     private String surname;
     public Person(String name, String surname) {
@@ -30,17 +30,12 @@ public class Person implements Sortable<Person> {
     }
 
     @Override
-    public boolean isBigger(Person person1, Person person2) {
-        int comp = compareWord(person1.surname, person2.surname);
-    if (comp >0) {
-        return true;
-    }
-    else if (comp == 0) {
-        int comp2 = compareWord(person1.name, person2.name);
-        return (comp2 >0);
+    public int compareTo( Person otherPerson) {
+        int comp = compareWord(this.surname, otherPerson.surname);
+
+        if (comp != 0) {
+            return comp;
         }
-    else {
-        return false;
-    }
+        return compareWord(this.name, otherPerson.name);
     }
 }
